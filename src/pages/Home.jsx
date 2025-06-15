@@ -561,12 +561,12 @@ const Home = () => {
   // Konfigurasi kriteria dengan bobot dan tipe (benefit/cost)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const criteria = {
-    kinerja: { weight: 0.25, type: 'benefit', label: 'Kinerja' },
-    kreativitas: { weight: 0.20, type: 'benefit', label: 'Kreativitas' },
-    inovasi: { weight: 0.15, type: 'benefit', label: 'Inovasi' },
-    absensi: { weight: 0.15, type: 'cost', label: 'Absensi' },
-    kedisiplinan: { weight: 0.15, type: 'cost', label: 'Kedisiplinan' },
-    perilaku: { weight: 0.10, type: 'cost', label: 'Perilaku' }
+    kinerja: { weight: 0.4083, type: 'benefit', label: 'Kinerja' },
+    kreativitas: { weight: 0.2417, type: 'benefit', label: 'Kreativitas' },
+    inovasi: { weight: 0.1583, type: 'benefit', label: 'Inovasi' },
+    absensi: { weight: 0.1083, type: 'cost', label: 'Absensi' },
+    kedisiplinan: { weight: 0.0617, type: 'cost', label: 'Kedisiplinan' },
+    perilaku: { weight: 0.0278, type: 'cost', label: 'Perilaku' }
   };
 
   // Mendapatkan kriteria berdasarkan tipe
