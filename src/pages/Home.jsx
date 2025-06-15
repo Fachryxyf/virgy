@@ -1252,7 +1252,7 @@ const Home = () => {
             </div>
             <div className="info-box">
               <p><strong>Visualisasi:</strong> Menunjukkan kontribusi masing-masing kriteria pada nilai akhir</p>
-              <p><strong>Catatan:</strong> Kriteria benefit divisualisasikan dengan warna hijau, kriteria cost dengan warna merah</p>
+              <p><strong>Catatan:</strong> Kriteria benefit divisualisasikan dengan warna hijau, kriteria cost dengan warna orange</p>
             </div>
           </div>
         )}
