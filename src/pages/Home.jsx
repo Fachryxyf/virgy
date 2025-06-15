@@ -1232,9 +1232,11 @@ const Home = () => {
                       dataKey={key} 
                       name={criteria[key].label} 
                       stackId="a" 
-                      fill={criteria[key].type === 'benefit' ? 
-                        `hsl(${120 + index * 40}, 70%, 50%)` : 
-                        `hsl(${0 + index * 40}, 70%, 50%)`} 
+                      fill={
+                        criteria[key].type === 'benefit'
+                          ? `hsl(${120 + index * 20}, 70%, 50%)` // Gradasi hijau (rentang diperkecil agar tidak jadi biru)
+                          : `hsl(${0 + index * 15}, 80%, 55%)`   // Gradasi merah/oranye
+                      }
                     />
                   ))}
                 </BarChart>
