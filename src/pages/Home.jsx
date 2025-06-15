@@ -1226,17 +1226,25 @@ const Home = () => {
                   <YAxis />
                   <Tooltip formatter={(value) => formatNumber(value)} />
                   <Legend />
-                  {Object.keys(criteria).map((key, index) => (
-                    <Bar 
-                      key={key} 
-                      dataKey={key} 
-                      name={criteria[key].label} 
-                      stackId="a" 
-                      fill={
-                        criteria[key].type === 'benefit'
-                          ? `hsl(${120 + index * 20}, 70%, 50%)` // Gradasi hijau (rentang diperkecil agar tidak jadi biru)
-                          : `hsl(${0 + index * 15}, 80%, 55%)`   // Gradasi merah/oranye
-                      }
+                  {/* 1. Petakan Kriteria Benefit dengan Gradasi Hijau */}
+                  {benefitCriteria.map((key, index) => (
+                    <Bar
+                      key={key}
+                      dataKey={key}
+                      name={criteria[key].label}
+                      stackId="a"
+                      fill={`hsl(${120 - index * 25}, 65%, 45%)`}
+                    />
+                  ))}
+                  
+                  {/* 2. Petakan Kriteria Cost dengan Gradasi Merah-Oranye-Kuning */}
+                  {costCriteria.map((key, index) => (
+                    <Bar
+                      key={key}
+                      dataKey={key}
+                      name={criteria[key].label}
+                      stackId="a"
+                      fill={`hsl(${60 - index * 30}, 90%, 55%)`}
                     />
                   ))}
                 </BarChart>
