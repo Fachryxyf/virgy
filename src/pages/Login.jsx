@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import api from "../services/api"; 
 import "../styles/Login.css";
 
 function Login() {
@@ -8,41 +9,34 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  // Ubah fungsi ini menjadi async untuk menangani panggilan API
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
 
-    // Simulasi login
-    if (email === "user@mandom.com" && password === "admin") {
-      localStorage.setItem("isLoggedIn", "true");
-      navigate("/home");
-    } else {
-      setError("Email atau password salah");
-    }
-
-    // Persiapan untuk API:
-    /*
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      // 1. Kirim request POST ke endpoint '/auth/login' di backend
+      //    URL lengkapnya menjadi 'http://localhost:8080/api/auth/login'
+      //    karena baseURL sudah diatur di api.js
+      const response = await api.post('/auth/login', {
+        email: email,
+        password: password,
       });
 
-      if (!response.ok) {
-        throw new Error("Email atau password salah");
+      // 2. Jika request berhasil (status 200 OK)
+      if (response.data && response.data.token) {
+        // 3. Simpan token yang diterima dari backend ke localStorage
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("isLoggedIn", "true"); // Ini bisa tetap dipakai untuk UI check
+        
+        // 4. Arahkan pengguna ke halaman home
+        navigate("/home");
       }
-
-      const data = await response.json();
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("isLoggedIn", "true");
-      navigate("/home");
     } catch (err) {
-      setError(err.message);
+      // 5. Jika terjadi error (misal: password salah atau server mati)
+      setError("Email atau password salah. Silakan coba lagi.");
+      console.error("Login failed:", err);
     }
-    */
   };
 
   return (
